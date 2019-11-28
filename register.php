@@ -2,8 +2,7 @@
 //We start a session here, which can be used to save login-details. We also connect to our database with config.php
 session_start();
 include('config.php');
-//The webhost we use runs with an older version of php, and therefore we use ob_start() to make our header's work properly
-ob_start();
+
 
 
 ?>
@@ -102,12 +101,8 @@ ob_start();
             $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
       
             $surname = mysqli_real_escape_string($conn, $_POST['surname']);
-      
-            $age = mysqli_real_escape_string($conn, $_POST['age']);
-      
-            $country = mysqli_real_escape_string($conn, $_POST['country']);
 
-            $sql = "INSERT INTO user (email, password, firstname, surname, country, age) VALUES ('$email', '$password', '$firstname', '$surname', '$country', '$age')";
+            $sql = "INSERT INTO user (email, password, firstname, surname) VALUES ('$email', '$password', '$firstname', '$surname')";
 
             $conn ->query($sql);
             
