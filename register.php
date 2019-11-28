@@ -52,16 +52,6 @@ include('config.php');
         </tr>
     
         <tr>
-          <td><label >Age</label></td>
-          <td><input type="number" name="age" placeholder="Age" required></td>
-        </tr>
-    
-        <tr>
-          <td><label >Country</label></td>
-          <td><input type="text" name="country" placeholder="Country" required></td>
-        </tr>
-    
-        <tr>
           <td><label >Password</label></td>
           <td><input type="password" name="password" placeholder="Password" required></td>
         </tr>
