@@ -63,7 +63,7 @@ include('config.php');
       <button type="submit" name="btnCreateUser">Create</button>
   </form>
 
-      <button type="button" onclick="switchPage('/index.php')" name="btnCancel">Cancel</button>
+      <button type="button" onclick="window.location.href='index.php'" name="btnCancel">Cancel</button>
     </div>
   </div>    
       
