@@ -20,8 +20,8 @@ include('config.php');
 
   <div class="header">
    <ul>
-      <a href="/logplan/login.php"><li>Login</li></a>
-      <a href="/logplan/register.php"><li>Register</li></a>
+      <a href="login.php"><li>Login</li></a>
+      <a href="register.php"><li>Register</li></a>
     </ul>
   </div>
 
@@ -97,7 +97,7 @@ include('config.php');
             $conn ->query($sql);
             
             //At last the user gets redirected to login.php
-            header("location: /login.php");
+            header("location:login.php");
           }
         }
       }
