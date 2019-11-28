@@ -23,8 +23,8 @@ if(!($_SESSION['email'])){
 
 <div class="header">
    <ul>
-      <a href="/main.php"><li>Find your PenPal!</li></a>
-      <a href="/index.php"><li>Logout</li></a>
+      <a href="main.php"><li>Find your PenPal!</li></a>
+      <a href="index.php"><li>Logout</li></a>
     </ul>
   </div>
 

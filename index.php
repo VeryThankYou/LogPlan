@@ -3,7 +3,7 @@
 session_start();
 // Contains our connection to our database
 include('config.php');
-
+session_unset();
 //Checks if a submit button that is inside the form, has been pushed.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   //Checks if it is the login button
