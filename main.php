@@ -4,9 +4,43 @@ session_start();
 include('config.php');
 
 //Check if we have a session called email. This way we block users from changing the url and trying to skip login.
-if(!($_SESSION['email'])){
+if(!isset($_SESSION['email'])){
   header('location: index.php');  
 }
+
+function userID($email, $conn){
+  $sql = "SELECT id FROM user WHERE email='$email';";
+  $result = $conn->query($sql);
+  $fetch = $result;
+  $row = mysqli_fetch_assoc($fetch);
+  return $row['id'];
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")  {
+  //Checks if we have pussed the button named conversation
+  if(isset($_POST['newProject'])){
+    $user = userID($_SESSION['email'], $conn);
+    $name = $_POST['projectName'];
+
+    $sql = "INSERT INTO project (name, user_id) VALUES ('$name', '$user');";
+    $conn ->query($sql);
+
+    $sql = "SELECT MAX(id) FROM project WHERE user_id=$user;";
+    echo $sql;
+    $result = $conn->query($sql);
+    $fetch = $result;
+    $row = mysqli_fetch_assoc($fetch);
+    echo $row;
+    var_dump($row);
+    $project = $row['MAX(id)'];
+
+    $sql = "INSERT INTO user_project (user_id, project_id) VALUES ('$user', '$project');";
+    $conn ->query($sql);
+
+   
+    }
+  }
+
 
 ?>
 <!DOCTYPE html>
@@ -33,7 +67,10 @@ if(!($_SESSION['email'])){
     <div class="nameBar">
       <p>Find your PenPal</p>
     </div>
-
+    <form method="POST">
+      <input type="text" name="projectName">
+      <input type="submit" name="newProject" value="Create Project">
+    </form>
 
   </div>
 
