@@ -26,12 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
     $conn ->query($sql);
 
     $sql = "SELECT MAX(id) FROM project WHERE user_id=$user;";
-    echo $sql;
     $result = $conn->query($sql);
     $fetch = $result;
     $row = mysqli_fetch_assoc($fetch);
-    echo $row;
-    var_dump($row);
     $project = $row['MAX(id)'];
 
     $sql = "INSERT INTO user_project (user_id, project_id) VALUES ('$user', '$project');";
