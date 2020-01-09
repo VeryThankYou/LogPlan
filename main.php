@@ -35,7 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
     $conn ->query($sql);
 
    
+    } if(isset($_POST['newProject'])){
+
+      $hentid = $_POST['openid'];
+      $_SESSION['project'] = $hentid;
+      header('location:project.php');
+
     }
+
   }
 
 
@@ -53,11 +60,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 <body>
 
 <div class="header">
-   <ul>
-      <a href="main.php"><li>Find your PenPal!</li></a>
-      <a href="index.php"><li>Logout</li></a>
-    </ul>
-  </div>
+  <ul>
+    <a href="main.php"><li>Find your PenPal!</li></a>
+    <a href="index.php"><li>Logout</li></a>
+  </ul>
+</div>
 
   <div class="inputPage">
 
@@ -70,6 +77,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
     </form>
 
   </div>
+<?php
+$userid = userID($_SESSION['email'], $conn);
+$sql = "SELECT * FROM project INNER JOIN user_project ON project.id = user_project.project_id WHERE user_project.user_id = $userid;";
+$result = $conn->query($sql);
 
+if($result->num_rows > 0){
+  ?>
+
+  <table class="gaesteSe">
+    <tr>
+      <th>Project</th>
+    </tr>
+  <?php
+  // løb alle rækker igennem
+  while($row = $result->fetch_assoc()) {
+  ?>
+    <tr>
+  <?php
+  $name = $row['name'];
+  $id = $row['id'];
+  echo "<td>$name</td><form method='POST'><td><input type='submit' class='button' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></td></form>";
+  ?>
+    </tr>
+  <?php
+
+}
+?>
+</table>
+<?php
+}
+?>
 <body>
 </html>
