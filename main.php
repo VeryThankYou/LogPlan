@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
     $conn ->query($sql);
 
    
-    } if(isset($_POST['newProject'])){
+    } if(isset($_POST['open'])){
 
       $hentid = $_POST['openid'];
       $_SESSION['project'] = $hentid;
