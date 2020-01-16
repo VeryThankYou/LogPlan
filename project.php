@@ -43,6 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
       }
     }
 
+  } else if(isset($_POST['time-element'])){
+
+    $start = $_POST['start'];
+    $end = $_POST['end'];
+    $userid = userID($_SESSION['email'], $conn);
+    $proid = $_SESSION['project'];
+    $sql = "INSERT INTO time_element (user_id, project_id, end_time, start_time) VALUES ('$userid', '$proid', '$end', '$start');";
+    $conn ->query($sql);
 
   }
 }
@@ -81,9 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
   <div>
 
   <form method='POST'>
-  <input type='text' name='descr'>
   <input type='datetime-local' name='start'>
   <input type='datetime-local' name='end'>
+  <input type='submit' name='time-element'>
   </form>
   </div>
 </body>
