@@ -78,5 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
   <input type="submit" name="add" value="Add to project">
   </form>
   </div>
+  <div>
+
+  <form method='POST'>
+  <input type='text' name='descr'>
+  <input type='datetime-local' name='start'>
+  <input type='datetime-local' name='end'>
+  </form>
+  </div>
 </body>
 </html>
