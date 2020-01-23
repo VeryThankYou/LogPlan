@@ -18,7 +18,7 @@ body, html {
     background-color: #AAf683
 }
 
-.inputBox {
+.inputBox_index {
     background-color: #ffd97d;
     margin: 100px 30%;
     width: 40%;
@@ -26,34 +26,67 @@ body, html {
     text-align: center;
 }
 
-.inputBox h1 {
+.inputBox_index h1 {
     color: white;
     font-size: 30px;
-
 }
 
-.indexLink {
-    background-color: #57a773;
-    display: inline-block;
-}
-
-input[type=submit] {
+.inputBox_index input[type=submit] {
     font-size: x-large;
     background-color: #57a773;
     border: none;
     color: white;
     min-width: 44%;
-    min-height: 170px;
-    text-decoration: none;
+    min-height: 170px;  
     margin: auto;
     margin-top: 4px;
     margin-bottom: 12px;
     cursor: pointer;
 }
 
+.inputBox_regIn {
+    background-color: #ffd97d;
+    margin: 100px 40%;
+    width: 20%;
+    justify-content: center;
+    text-align: center;
+}
+
+.inputBox_regIn h1 {
+    color: white;
+    font-size: 30px;
+}
+
+.table_regIn {
+    margin: auto;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.table_regIn input[type=text], input[type=password] {
+    padding: 2px 4px;
+    width: 200px;
+}
+
+.table_regIn th {
+    padding-bottom: 10px;
+}
+
+.inputBox_regIn input[type=submit] {
+    font-size: x-large;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    width: 100%;
+    margin: auto;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/*
 @media only screen and (max-width: 768){
     
 }
-
-
-
+*/
