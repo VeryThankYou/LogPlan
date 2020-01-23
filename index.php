@@ -29,14 +29,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <div class="header">
     <h1>LogPlan</h1>
-  </div>
+  </div> 
 
   <div class="inputBox">
-    <p>Jeg super meget logger ind lige her, memes</p>
-    <div class="indexLink"><p>wow, jeg er</p></div>
-    <div class="indexLink"><p>wow, mig også</p></div>
+    <h1>Login or register</h1>
+    <form method="POST">
+      <input type="submit" name="login" value="Login">
+      <input type="submit" name="register" value="Register">
+    </form>
   </div>
-
 
 </body>
 </html>
