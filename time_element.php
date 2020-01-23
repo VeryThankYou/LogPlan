@@ -8,19 +8,24 @@ if(!isset($_SESSION['email'])){
   header('location: index.php');
 }
 $timeid = $_SESSION['time-element'];
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")  {
+    if(isset($_POST['back'])){
+        header('location:project.php');
+    } else if(isset($_POST['adddes'])){
+
+        $des = $_POST['dscrpt'];
+        $sql = "UPDATE time_element SET description = '$des' WHERE id = '$timeid';";
+        $conn->query($sql);
+    }
+}
 $sql = "SELECT * FROM time_element WHERE id='$timeid';";
 $result = $conn->query($sql);
 $row = $row = $result->fetch_assoc();
 $dscrpt = $row['description'];
 $start = $row['start_time'];
 $end = $row['end_time'];
-
-if ($_SERVER["REQUEST_METHOD"] == "POST")  {
-    if(isset($_POST['back'])){
-        header('location:project.php');
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +41,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 <?php
 
 echo $start;
-echo $end;
-echo $dscrpt;
 ?>
+<br>
+<?php
+echo $end;
+?>
+<br>
+
+<form method='POST'>
+Description
+<br>
+<?php
+echo "<textarea name='dscrpt'>$dscrpt</textarea>";
+?>
+<input type='submit' name='adddes' value='Save description'>
+</form>
 <form method='POST'>
 <input type='submit' name='back' value='Back'>
 </form>
