@@ -1,8 +1,8 @@
 <?php
-$servername = "ftp.teknikfag.aze.dk";
-$username = "logplan@ftp.teknikfag.aze.dk";
-$password = "W.b.{XLR(4(W";
-$dbname = "teknikfa_logplan";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "logplan";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 mysqli_set_charset($conn,"utf8");
