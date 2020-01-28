@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <div class="inputBox_index">
     <h1>Login or register</h1>
+    
     <form method="POST">
       <input type="submit" name="login" value="Login">
       <input type="submit" name="register" value="Register">

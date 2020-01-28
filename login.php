@@ -58,13 +58,13 @@ if(!empty( $_POST['email'] ) && !empty( $_POST['pw'] )) {
       <table class="table_regIn">
 
         <tr>
-          <th>Mail: <br/></th>
-          <th><input type="text" name="email" /></th>
+          <th>Email: <br/></th>
+          <th><input type="text" name="email" placeholder="Enter email" required/></th>
         </tr>
 
         <tr>
           <th>Password: <br/></th>
-          <th><input type="password" name="pw" /></th>
+          <th><input type="password" name="pw" placeholder="Password" required  /></th>
         </tr>
 
         <tr>
@@ -73,6 +73,10 @@ if(!empty( $_POST['email'] ) && !empty( $_POST['pw'] )) {
 
       </table>
     </form>
+  </div>
+
+  <div>
+    <button class="switch_regIn" type="button" onclick="window.location.href='register.php'" name="btnCancel">Register</button>  
   </div>
 
 </body>
