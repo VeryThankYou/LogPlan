@@ -47,40 +47,37 @@ if(!empty( $_POST['email'] ) && !empty( $_POST['pw'] )) {
 <body>
 
   <div class="header">
-    <ul>
-      <a href="login.php"><li>Login</li></a>
-      <a href="register.php"><li>Register</li></a>
-    </ul>
+    <h1>LogPlan</h1>
+  </div> 
+
+
+
+  <div class="inputBox_regIn">
+    <h1>Login</h1>  
+    <form method="POST">
+      <table class="table_regIn">
+
+        <tr>
+          <th>Email: <br/></th>
+          <th><input type="text" name="email" placeholder="Enter email" required/></th>
+        </tr>
+
+        <tr>
+          <th>Password: <br/></th>
+          <th><input type="password" name="pw" placeholder="Password" required  /></th>
+        </tr>
+
+        <tr>
+          <th colspan="2"><input type="submit" value="Login" /> </th>
+        </tr>
+
+      </table>
+    </form>
   </div>
 
-
-  <div class="inputPage">
-
-    <div class="nameBar">
-      <p>Login</p>
-    </div>
-
-    <div class="inputBox">
-      <form method="POST">
-        <table>
-
-          <tr>
-            <th>Mail: <br/></th>
-            <th><input type="text" name="email" /></th>
-          </tr>
-
-          <tr>
-            <th>Password: <br /></th>
-            <th><input type="password" name="pw" /></th>
-          </tr>
-
-          <tr>
-            <th><input type="submit" value="Login" /> </th>
-          </tr>
-
-        </table>
-      </form>
-    </div>
+  <div>
+    <button class="switch_regIn" type="button" onclick="window.location.href='register.php'" name="btnCancel">Register</button>  
   </div>
+
 </body>
 </html>

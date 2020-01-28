@@ -28,28 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
   <div class="header">
-    <ul>
-      <a href="login.php"><li>Login</li></a>
-      <a href="register.php"><li>Register</li></a>
-    </ul>
-  </div>
+    <h1>LogPlan</h1>
+  </div>  
 
-  <div class="inputPage">
-
-    <div class="nameBar">
-      <p>PenPal</p>
-    </div>
-
-    <div class="inputBox">
-      <table>
-        <tr>
-          <form method="POST"><th><input type="submit" name="login" value="Login"/></th></form>
-        </tr>
-        <tr>
-          <form method="POST"><th><input type="submit" name="register" value="Register"/></th></form>
-        </tr>
-      </table>
-    </div>  
+  <div class="inputBox_index">
+    <h1>Login or register</h1>
+    
+    <form method="POST">
+      <input type="submit" name="login" value="Login">
+      <input type="submit" name="register" value="Register">
+    </form>
   </div>
 
 </body>
