@@ -57,6 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
     $hentid = $_POST['time_element_id'];
     $_SESSION['time-element'] = $hentid;
     header('location:time_element.php');
+}else if(isset($_POST['dlt'])){
+  $commid = $_POST['time_element_id'];
+  $sql = "DELETE FROM time_element WHERE id=$commid;";
+  $conn->query($sql);
 }
 }
 
@@ -120,7 +124,7 @@ if($result->num_rows > 0){
   <?php
   $time = $row['start_time'];
   $id = $row['id'];
-  echo "<td>$time</td><form method='POST'><td><input type='submit' class='button' name='descript' value='Open time-element' /><input type='hidden' value='$id' name='time_element_id'/></td></form>";
+  echo "<td>$time</td><form method='POST'><td><input type='submit' class='button' name='descript' value='Open' /><input type='submit' class='button' name='dlt' value='Delete' /><input type='hidden' value='$id' name='time_element_id'/></td></form>";
   ?>
     </tr>
   <?php
