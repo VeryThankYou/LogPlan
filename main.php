@@ -42,9 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
       header('location:project.php');
 
     }
-
   }
-
 
 ?>
 <!DOCTYPE html>
@@ -59,54 +57,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 <body>
 
-<div class="header">
-  <ul>
-    <a href="main.php"><li>Find your PenPal!</li></a>
-    <a href="index.php"><li>Logout</li></a>
-  </ul>
-</div>
+  <div class="header">
 
-  <div class="inputPage">
+    <h1>LogPlan</h1>
 
-    <div class="nameBar">
-      <p>Find your PenPal</p>
-    </div>
-    <form method="POST">
+    <form method="POST" class="header_Form">
+  
       <input type="text" name="projectName">
       <input type="submit" name="newProject" value="Create Project">
+
     </form>
-
   </div>
-<?php
-$userid = userID($_SESSION['email'], $conn);
-$sql = "SELECT * FROM project INNER JOIN user_project ON project.id = user_project.project_id WHERE user_project.user_id = $userid;";
-$result = $conn->query($sql);
 
-if($result->num_rows > 0){
+
+  <?php
+  $userid = userID($_SESSION['email'], $conn);
+  $sql = "SELECT * FROM project INNER JOIN user_project ON project.id = user_project.project_id WHERE user_project.user_id = $userid;";
+  $result = $conn->query($sql);
+
+  if($result->num_rows > 0){
   ?>
 
-  <table class="gaesteSe">
+  <table class="projectTable">
     <tr>
-      <th>Project</th>
+      <th colspan="2">Projects</th>
     </tr>
   <?php
   // løb alle rækker igennem
   while($row = $result->fetch_assoc()) {
   ?>
-    <tr>
-  <?php
-  $name = $row['name'];
-  $id = $row['id'];
-  echo "<td>$name</td><form method='POST'><td><input type='submit' class='button' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></td></form>";
-  ?>
+    <tr class="project">
+    <?php
+      $name = $row['name'];
+      $id = $row['id'];
+      echo "<td>$name</td><form method='POST'><td><input type='submit' class='button' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></td></form>";
+    ?>
     </tr>
   <?php
-
-}
-?>
-</table>
-<?php
-}
-?>
+  }
+  ?>
+  </table>
+  <?php
+  }
+  ?>
 <body>
 </html>

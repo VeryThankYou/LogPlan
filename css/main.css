@@ -7,12 +7,38 @@ box-sizing: border-box;
 
 .header {
     background-color: #EE6055;
+    max-height: 92.8px;
 }
 
 .header h1 {
     font-size: 80px;
     color: #ff9b85;
+    display: inline-block;
 }
+
+.header_Form {
+    display: inline-block;
+    position: absolute;
+    left: 40%;
+    top: 35px;
+    vertical-align: super;
+}
+
+.header_Form input[type=text] {
+    height: 36px;
+    width: 300px;
+    margin-right: 12px;
+}    
+
+.header_Form input[type=submit] {
+    height: 36px;
+    padding: 4px 6px;
+    font-size: large;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+}    
 
 body, html {
     background-color: #AAf683
@@ -63,7 +89,17 @@ body, html {
     text-align: right;
 }
 
-.table_regIn input[type=text], input[type=password], input[type=email] {
+.table_regIn input[type=text] {
+    padding: 2px 4px;
+    width: 100%;
+}
+
+.table_regIn input[type=password] {
+    padding: 2px 4px;
+    width: 100%;
+}
+
+.table_regIn input[type=email] {
     padding: 2px 4px;
     width: 100%;
 }
@@ -94,10 +130,20 @@ body, html {
     border: none;  
     color: white; 
     cursor: pointer;
+    text-shadow: 3px 2px #57a773;
 }
 
-/*
-@media only screen and (max-width: 768){
-    
+.projectTable {
+    margin: 100px 18%;
 }
-*/
+
+.projectTable th{
+    font-size: 70px;
+    color: white;
+    text-shadow: 3px 2px #57a773;
+}
+
+.project {
+    background-color: #ffd97d;
+}
+
