@@ -27,16 +27,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
         $sql = "UPDATE time_element SET description = '$des' WHERE id = '$timeid';";
         $conn->query($sql);
     }else if(isset($_POST['postComment'])){
-        echo "Hej";
         $commenttext = $_POST['commentText'];
         $userid = userID($_SESSION['email'], $conn);
         $sql = "INSERT INTO comment (user_id, time_element_id, text) VALUES ('$userid', '$timeid', '$commenttext');";
         $conn->query($sql);
+    }else if(isset($_POST['dlt'])){
+      $commid = $_POST['dltid'];
+      $sql = "DELETE FROM comment WHERE id=$commid;";
+      $conn->query($sql);
     }
 }
 $sql = "SELECT * FROM time_element WHERE id='$timeid';";
 $result = $conn->query($sql);
-$row = $row = $result->fetch_assoc();
+$row = $result->fetch_assoc();
 $dscrpt = $row['description'];
 $start = $row['start_time'];
 $end = $row['end_time'];
@@ -100,8 +103,19 @@ if($result->num_rows > 0){
     <tr>
   <?php
   $poster = $row['user_id'];
+  $id = $row['id'];
+  $sql = "SELECT firstname, surname FROM user WHERE id='$poster';";
+  $result2 = $conn->query($sql);
+  $row2 = $result2->fetch_assoc();
+  $fname = $row2['firstname'];
+  $lname = $row2['surname'];
+  $userid = userID($_SESSION['email'], $conn);
+
   $comment = $row['text'];
-  echo "<td>$poster</td><td>$comment</td>";
+  echo "<td>$fname $lname</td><td>$comment</td>";
+  if($poster == $userid){
+    echo "<td><form method='POST'><input type='submit' name='dlt' value='Delete'><input type='hidden' name='dltid' value='$id'></form></td>";
+  }
   ?>
     </tr>
   <?php
