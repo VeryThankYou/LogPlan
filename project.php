@@ -43,8 +43,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
       }
     }
 
+  } else if(isset($_POST['time-element'])){
 
-  }
+    $start = $_POST['start'];
+    $end = $_POST['end'];
+    $userid = userID($_SESSION['email'], $conn);
+    $proid = $_SESSION['project'];
+    $sql = "INSERT INTO time_element (user_id, project_id, end_time, start_time) VALUES ('$userid', '$proid', '$end', '$start');";
+    $conn ->query($sql);
+
+  } else if(isset($_POST['descript'])){
+
+    $hentid = $_POST['time_element_id'];
+    $_SESSION['time-element'] = $hentid;
+    header('location:time_element.php');
+}else if(isset($_POST['dlt'])){
+  $commid = $_POST['time_element_id'];
+  $sql = "DELETE FROM time_element WHERE id=$commid;";
+  $conn->query($sql);
+}
 }
 
 ?>
@@ -78,5 +95,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
   <input type="submit" name="add" value="Add to project">
   </form>
   </div>
+  <div>
+
+  <form method='POST'>
+  <input type='datetime-local' name='start'>
+  <input type='datetime-local' name='end'>
+  <input type='submit' name='time-element' value='Create time-element'>
+  </form>
+  </div>
+
+  <?php
+$proid = $_SESSION['project'];
+$sql = "SELECT * FROM time_element WHERE project_id = $proid;";
+$result = $conn->query($sql);
+
+if($result->num_rows > 0){
+  ?>
+
+  <table class="gaesteSe">
+    <tr>
+      <th>Time-elements</th>
+    </tr>
+  <?php
+  // løb alle rækker igennem
+  while($row = $result->fetch_assoc()) {
+  ?>
+    <tr>
+  <?php
+  $time = $row['start_time'];
+  $id = $row['id'];
+  echo "<td>$time</td><form method='POST'><td><input type='submit' class='button' name='descript' value='Open' /><input type='submit' class='button' name='dlt' value='Delete' /><input type='hidden' value='$id' name='time_element_id'/></td></form>";
+  ?>
+    </tr>
+  <?php
+
+}
+?>
+</table>
+<?php
+}
+?>
 </body>
 </html>
