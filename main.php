@@ -41,6 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
       $_SESSION['project'] = $hentid;
       header('location:project.php');
 
+    }else if(isset($_POST['dlt'])){
+      $commid = $_POST['dltid'];
+      $sql = "DELETE FROM project WHERE id=$commid;";
+      $conn->query($sql);
     }
 
   }
@@ -97,7 +101,15 @@ if($result->num_rows > 0){
   <?php
   $name = $row['name'];
   $id = $row['id'];
+  $sql = "SELECT user_id FROM project WHERE id=$id;";
+  $result2 = $conn->query($sql);
+  $row2 = mysqli_fetch_assoc($result2);
+  $creator = $row2['user_id'];
+  $userid = userID($_SESSION['email'], $conn);
   echo "<td>$name</td><form method='POST'><td><input type='submit' class='button' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></td></form>";
+  if($creator == $userid){
+    echo "<td><form method='POST'><input type='submit' name='dlt' value='Delete'><input type='hidden' name='dltid' value='$id'></form></td>";
+  }
   ?>
     </tr>
   <?php
