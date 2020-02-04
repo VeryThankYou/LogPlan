@@ -82,36 +82,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
   if($result->num_rows > 0){
   ?>
 
-  <table class="projectTable">
-    <tr>
-      <th colspan="2">Projects</th>
-    </tr>
+  <div class="projectTable">
+    <p>Projects</p>
   <?php
   // løb alle rækker igennem
   while($row = $result->fetch_assoc()) {
   ?>
-    <tr class="project">
-    
-    <?php
-      $name = $row['name'];
-      $id = $row['id'];
-      $sql = "SELECT user_id FROM project WHERE id=$id;";
-      $result2 = $conn->query($sql);
-      $row2 = mysqli_fetch_assoc($result2);
-      $creator = $row2['user_id'];
-      $userid = userID($_SESSION['email'], $conn);
-      echo "<td>$name</td><form method='POST'><td><input type='submit' class='button' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></td></form>";
-      if($creator == $userid){
-        echo "<td><form method='POST'><input type='submit' name='dlt' value='Delete'><input type='hidden' name='dltid' value='$id'></form></td>";
-    ?>
-
-    </tr>
+    <div>
+      <div class="project">
+      
+      <?php
+        $name = $row['name'];
+        $id = $row['id'];
+        $sql = "SELECT user_id FROM project WHERE id=$id;";
+        $result2 = $conn->query($sql);
+        $row2 = mysqli_fetch_assoc($result2);
+        $creator = $row2['user_id'];
+        $userid = userID($_SESSION['email'], $conn);
+        echo "<h1>$name</h1> <form method='POST'> <input type='submit' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></form></div>";
+        if($creator == $userid){
+          echo "<div class='deletThis'><form method='POST'><input type='submit' name='dlt' value='Delete'><input type='hidden' name='dltid' value='$id'></form></div>";
+      ?>
+    </div>
   <?php
   }
   }
   ?>
   
-  </table>
+  </div>
 
   <?php
   }

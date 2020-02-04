@@ -28,6 +28,7 @@ box-sizing: border-box;
     height: 36px;
     width: 300px;
     margin-right: 12px;
+    border: 1px solid black;
 }    
 
 .header_Form input[type=submit] {
@@ -137,13 +138,58 @@ body, html {
     margin: 100px 18%;
 }
 
-.projectTable th{
+.projectTable p{
     font-size: 70px;
     color: white;
     text-shadow: 3px 2px #57a773;
 }
 
 .project {
+    padding-left: 4px;
     background-color: #ffd97d;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    border-style: groove;
+    display: inline-block;
+    width: 80%;
 }
 
+.project h1 {
+    display: inline-block;
+    color: white;
+}
+
+.project form {
+    display: inline-block;
+}
+
+.project input[type=submit] {
+    font-size: x-large;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+    float: right;
+    padding: 3px 40px;  
+    border-radius: 4px;
+}
+
+.project form {
+    float: right;
+    margin: 4px 4px;
+}
+
+.deletThis {
+    display: inline-block;
+}
+
+.deletThis input[type=submit] {
+    font-size: x-large;
+    background-color: #EE6055;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 3px 3px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
