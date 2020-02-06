@@ -104,7 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
         $result2 = $conn->query($sql);
         $row2 = mysqli_fetch_assoc($result2);
         $creator = $row2['user_id'];
-        $userid = userID($_SESSION['email'], $conn);
         echo "<h1>$name</h1> <form method='POST'> <input type='submit' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></form></div>";
         if($creator == $userid){
           echo "<div class='deletThis'><form method='POST'><input type='submit' name='dlt' value='Delete'><input type='hidden' name='dltid' value='$id'></form></div>";
