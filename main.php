@@ -46,9 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
       $sql = "DELETE FROM project WHERE id=$commid;";
       $conn->query($sql);
     }
-
   }
-
 
 ?>
 <!DOCTYPE html>
@@ -63,61 +61,65 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 <body>
 
-<div class="header">
-  <ul>
-    <a href="main.php"><li>Find your PenPal!</li></a>
-    <a href="index.php"><li>Logout</li></a>
-  </ul>
-</div>
+  <div class="header">
 
-  <div class="inputPage">
+    <h1>LogPlan</h1>
 
-    <div class="nameBar">
-      <p>Find your PenPal</p>
-    </div>
-    <form method="POST">
+    <form method="POST" class="header_Form">
+  
       <input type="text" name="projectName">
       <input type="submit" name="newProject" value="Create Project">
+
     </form>
 
-  </div>
-<?php
-$userid = userID($_SESSION['email'], $conn);
-$sql = "SELECT * FROM project INNER JOIN user_project ON project.id = user_project.project_id WHERE user_project.user_id = $userid;";
-$result = $conn->query($sql);
+    <a href="index.php">
+      <div class="logout">
+        <p>Logout</p>
+      </div>
+    </a>    
 
-if($result->num_rows > 0){
+  </div>
+
+  <?php
+  $userid = userID($_SESSION['email'], $conn);
+  $sql = "SELECT * FROM project INNER JOIN user_project ON project.id = user_project.project_id WHERE user_project.user_id = $userid;";
+  $result = $conn->query($sql);
+
+  if($result->num_rows > 0){
   ?>
 
-  <table class="gaesteSe">
-    <tr>
-      <th>Project</th>
-    </tr>
+  <div class="projectTable">
+    <p>Projects</p>
   <?php
   // løb alle rækker igennem
   while($row = $result->fetch_assoc()) {
   ?>
-    <tr>
+    <div>
+      <div class="project">
+      
+      <?php
+        $name = $row['name'];
+        $id = $row['id'];
+        $sql = "SELECT user_id FROM project WHERE id=$id;";
+        $result2 = $conn->query($sql);
+        $row2 = mysqli_fetch_assoc($result2);
+        $creator = $row2['user_id'];
+        $userid = userID($_SESSION['email'], $conn);
+        echo "<h1>$name</h1> <form method='POST'> <input type='submit' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></form></div>";
+        if($creator == $userid){
+          echo "<div class='deletThis'><form method='POST'><input type='submit' name='dlt' value='Delete'><input type='hidden' name='dltid' value='$id'></form></div>";
+      ?>
+    </div>
   <?php
-  $name = $row['name'];
-  $id = $row['id'];
-  $sql = "SELECT user_id FROM project WHERE id=$id;";
-  $result2 = $conn->query($sql);
-  $row2 = mysqli_fetch_assoc($result2);
-  $creator = $row2['user_id'];
-  echo "<td>$name</td><form method='POST'><td><input type='submit' class='button' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></td></form>";
-  if($creator == $userid){
-    echo "<td><form method='POST'><input type='submit' name='dlt' value='Delete'><input type='hidden' name='dltid' value='$id'></form></td>";
+  }
   }
   ?>
-    </tr>
-  <?php
+  
+  </div>
 
-}
-?>
-</table>
-<?php
-}
-?>
+  <?php
+  }
+  ?>
+
 <body>
 </html>
