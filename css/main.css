@@ -56,6 +56,25 @@ box-sizing: border-box;
     color: white;
 }
 
+.back {
+    margin: 25px 30px;
+    padding: 3px 30px;
+    float: right; 
+    font-size: x-large;
+    background-color: #ff9b85;
+    border-radius: 4px;
+}
+
+.back input[type=submit] {
+    height: 36px;
+    padding: 4px 4px;
+    font-size: large;
+    border: none;
+    cursor: pointer;
+    background-color: #ff9b85;
+    color: white;
+}
+
 body, html {
     background-color: #AAf683
 }
@@ -271,4 +290,14 @@ body, html {
     border: none;
     color: white;
     cursor: pointer;
+}
+
+.dateName {
+    margin-top: 80px;
+    margin-left: 40%;   
+    color: white;
+}
+
+.description {
+    
 }

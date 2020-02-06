@@ -71,43 +71,57 @@ $result = $conn->query($sql);
       </div>
     </a>   
 
-  </div>
-  <div>
-  <?php
+    <div class="back">
+      <form method='POST'>
+      <input type='submit' name='back' value='Back'>
+      </form>
+    </div>
 
-  echo $start;
-  ?>
-  <br>
-  <?php
-  echo $end;
-  ?>
-  <br>
   </div>
-<form method='POST'>
-Description
-<br>
-<?php
-echo "<textarea name='dscrpt'>$dscrpt</textarea>";
-?>
-<input type='submit' name='adddes' value='Save description'>
-</form>
-<form method='POST'>
-<input type='submit' name='back' value='Back'>
-</form>
+  <h1 class="dateName">
+    <?php
+
+    echo $start;
+    ?>
+    <br>
+    <?php
+    echo $end;
+    ?>
+    <br>
+  </h1>
+
+  <div class="description">
+    <form method='POST'>
+    Description
+    <br>
+    <?php
+    echo "<textarea name='dscrpt'>$dscrpt</textarea>";
+    ?>
+    <input type='submit' name='adddes' value='Save description'>
+    </form>
+  </div>
+
+
 
 <?php
 
 if($result->num_rows > 0){
 
     ?>
+  
+  <form method='POST'>
+    <textarea name='commentText'>Write your LogComment here...</textarea>
+    <input type='submit' name='postComment' value='Post comment'>
+  </form>
 
   <table class="kommentarer">
     <tr>
       <th>LogComments</th>
     </tr>
+
     <tr>
-    <td>User</td>
-    <td>LogComment</td>
+      <td>User</td>
+      <td>LogComment</td>
     </tr>
     <?php
   // løb alle rækker igennem
@@ -137,9 +151,6 @@ if($result->num_rows > 0){
     echo "There are no LogComments on this time-element";
 }
 ?>
-<form method='POST'>
-<textarea name='commentText'>Write your LogComment here...</textarea>
-<input type='submit' name='postComment' value='Post comment'>
-</form>
+
 </body>
 </html>
