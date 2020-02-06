@@ -17,7 +17,7 @@ function userID($email, $conn){
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")  {
-  //Checks if we have pussed the button named conversation
+  //Checks if we have pushed the button named conversation
   if(isset($_POST['newProject'])){
     $user = userID($_SESSION['email'], $conn);
     $name = $_POST['projectName'];
@@ -105,7 +105,6 @@ if($result->num_rows > 0){
   $result2 = $conn->query($sql);
   $row2 = mysqli_fetch_assoc($result2);
   $creator = $row2['user_id'];
-  $userid = userID($_SESSION['email'], $conn);
   echo "<td>$name</td><form method='POST'><td><input type='submit' class='button' name='open' value='Open' /><input type='hidden' value='$id' name='openid'/></td></form>";
   if($creator == $userid){
     echo "<td><form method='POST'><input type='submit' name='dlt' value='Delete'><input type='hidden' name='dltid' value='$id'></form></td>";
