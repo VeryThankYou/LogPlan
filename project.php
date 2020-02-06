@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
     $inputid = userID($input, $conn);
 
     if($inputid == null){
-      echo "findes ikke";
+      echo "<div class='error'>user does not exist</div>";
     } else{
       $proid = $_SESSION['project'];
       $sql = "SELECT * FROM user_project WHERE user_id='$inputid' AND project_id='$proid';";
@@ -78,62 +78,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 <body>
 
   <div class="header">
-    <ul>
-      <a href="login.php"><li>Login</li></a>
-      <a href="register.php"><li>Register</li></a>
-      <a href="main.php"><li>Projects</li></a>
-    </ul>
+
+    <a href="main.php"><h1>LogPlan</h1></a>
+
+    <a href="index.php">
+      <div class="logout">
+        <p>Logout</p>
+      </div>
+    </a>   
+
   </div>
-  <h1><?php
-  $prjname = projectName($_SESSION['project'], $conn);
-  echo $prjname;
-  ?>
-  </h1>
-  <div>
-  <form method='POST'>
-  <input type="text" name="mail">
-  <input type="submit" name="add" value="Add to project">
-  </form>
-  </div>
-  <div>
+  <div class="projectView">
+    <h1>
+    <?php
+    $prjname = projectName($_SESSION['project'], $conn);
+    echo $prjname;
+    ?>
+    </h1>
+    <div class="projectInput">
+      <div>
+        <form method='POST'>
+          <input type="text" name="mail">
+          <input type="submit" name="add" value="Add to project">
+        </form>
+      </div>
 
-  <form method='POST'>
-  <input type='datetime-local' name='start'>
-  <input type='datetime-local' name='end'>
-  <input type='submit' name='time-element' value='Create time-element'>
-  </form>
-  </div>
+      <div>
+        <form method='POST'>
+          <input type='date' name='start'>
+          <input type='date' name='end'>
+          <input type='submit' name='time-element' value='Create time-element'>
+        </form>
+      </div>
+    </div>
 
-  <?php
-$proid = $_SESSION['project'];
-$sql = "SELECT * FROM time_element WHERE project_id = $proid;";
-$result = $conn->query($sql);
+      <?php
+    $proid = $_SESSION['project'];
+    $sql = "SELECT * FROM time_element WHERE project_id = $proid;";
+    $result = $conn->query($sql);
 
-if($result->num_rows > 0){
-  ?>
+    if($result->num_rows > 0){
+      ?>
+    <center><div class="projectComment">
+      <table>
+        <tr>
+          <th colspan="2">Time-elements</th>
+        </tr>
+      <?php
+      // løb alle rækker igennem
+      while($row = $result->fetch_assoc()) {
+      ?>
+        <tr>
+      <?php
+      $time = $row['start_time'];
+      $id = $row['id'];
+      echo "<td>$time</td><form method='POST'><td><input type='submit' class='open' name='descript' value='Open' /><input type='submit' class='delete' name='dlt' value='Delete' /><input type='hidden' value='$id' name='time_element_id'/></td></form>";
+      ?>
+        </tr>
+    
+    <?php
+    }
+    ?>
 
-  <table class="gaesteSe">
-    <tr>
-      <th>Time-elements</th>
-    </tr>
-  <?php
-  // løb alle rækker igennem
-  while($row = $result->fetch_assoc()) {
-  ?>
-    <tr>
-  <?php
-  $time = $row['start_time'];
-  $id = $row['id'];
-  echo "<td>$time</td><form method='POST'><td><input type='submit' class='button' name='descript' value='Open' /><input type='submit' class='button' name='dlt' value='Delete' /><input type='hidden' value='$id' name='time_element_id'/></td></form>";
-  ?>
-    </tr>
-  <?php
-
-}
-?>
-</table>
+      </table>
+    </div></center>
 <?php
 }
 ?>
+  </div>
 </body>
 </html>

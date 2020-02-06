@@ -5,13 +5,55 @@ text-decoration: none;
 box-sizing: border-box;
 }
 
+.error {
+    background-color: #57a773;
+    padding-left: 4px;
+}
+
 .header {
     background-color: #EE6055;
+    max-height: 92.8px;
 }
 
 .header h1 {
     font-size: 80px;
     color: #ff9b85;
+    display: inline-block;
+}
+
+.header_Form {
+    display: inline-block;
+    position: absolute;
+    left: 40%;
+    top: 35px;
+    vertical-align: super;
+}
+
+.header_Form input[type=text] {
+    height: 36px;
+    width: 300px;
+    margin-right: 12px;
+    border: 1px solid black;
+}    
+
+.header_Form input[type=submit] {
+    height: 36px;
+    padding: 4px 6px;
+    font-size: large;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+} 
+
+.logout {
+    margin: 30px 30px;
+    padding: 3px 40px;
+    float: right; 
+    font-size: x-large;
+    background-color: #ff9b85;
+    border-radius: 4px;
+    color: white;
 }
 
 body, html {
@@ -63,7 +105,17 @@ body, html {
     text-align: right;
 }
 
-.table_regIn input[type=text], input[type=password], input[type=email] {
+.table_regIn input[type=text] {
+    padding: 2px 4px;
+    width: 100%;
+}
+
+.table_regIn input[type=password] {
+    padding: 2px 4px;
+    width: 100%;
+}
+
+.table_regIn input[type=email] {
     padding: 2px 4px;
     width: 100%;
 }
@@ -94,10 +146,129 @@ body, html {
     border: none;  
     color: white; 
     cursor: pointer;
+    text-shadow: 3px 2px #57a773;
 }
 
-/*
-@media only screen and (max-width: 768){
-    
+.projectTable {
+    margin: 100px 18%;
 }
-*/
+
+.projectTable p{
+    font-size: 70px;
+    color: white;
+    text-shadow: 3px 2px #57a773;
+}
+
+.project {
+    padding-left: 4px;
+    background-color: #ffd97d;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    border-style: groove;
+    display: inline-block;
+    width: 80%;
+}
+
+.project h1 {
+    display: inline-block;
+    color: white;
+}
+
+.project form {
+    display: inline-block;
+}
+
+.project input[type=submit] {
+    font-size: x-large;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+    float: right;
+    padding: 3px 40px;  
+    border-radius: 4px;
+}
+
+.project form {
+    float: right;
+    margin: 4px 4px;
+}
+
+.deletThis {
+    display: inline-block;
+}
+
+.deletThis input[type=submit] {
+    font-size: x-large;
+    background-color: #EE6055;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 3px 3px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+
+.projectView {
+    margin: 100px 18%;
+    text-align: center;
+}
+
+.projectView h1 {
+    font-size: 70px;
+    color: white;
+    text-shadow: 3px 2px #57a773;
+}
+
+.projectInput {
+    padding: 6px;
+    background-color: #ffd97d;
+    border-radius: 14px;
+    border-style: groove;
+    margin: 0px 25%;
+}
+
+.projectInput input[type=text] {
+    padding: 2px 4px;
+}
+
+.projectInput input[type=submit] {
+    padding: 2px 4px;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.projectInput input[type=date] {
+    padding: 2px 4px;
+}
+
+.projectComment {
+    margin: 18px 25%;
+    padding: 6px;
+    background-color: #ffd97d;
+    border-radius: 14px;
+    border-style: groove;
+}
+
+.projectComment th {
+    color: gray;
+}
+
+.open {
+    padding: 2px 4px;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 0px 13px;    
+}
+
+.delete {
+    padding: 2px 4px;
+    background-color: #EE6055;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
