@@ -56,6 +56,25 @@ box-sizing: border-box;
     color: white;
 }
 
+.back {
+    margin: 25px 30px;
+    padding: 3px 30px;
+    float: right; 
+    font-size: x-large;
+    background-color: #ff9b85;
+    border-radius: 4px;
+}
+
+.back input[type=submit] {
+    height: 36px;
+    padding: 4px 4px;
+    font-size: large;
+    border: none;
+    cursor: pointer;
+    background-color: #ff9b85;
+    color: white;
+}
+
 body, html {
     background-color: #AAf683
 }
@@ -271,4 +290,96 @@ body, html {
     border: none;
     color: white;
     cursor: pointer;
+}
+
+.dateName {
+    margin-top: 80px;
+    margin-left: 40%;   
+    color: white;
+}
+
+.description {
+    margin: 23px 33%;
+    padding: 6px;
+    background-color: #ffd97d;
+    border-radius: 14px;
+    border-style: groove;
+}
+
+.description p {
+    color: gray;
+    font-size: large;
+    margin-bottom: -15px;
+}
+
+.description textarea {
+    height: 69px;
+    width: 100%;
+}
+
+.description input[type=submit] {
+    padding: 2px 4px;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    border-radius: 3px;
+    margin-top: 3px;
+}
+
+.writeComment {
+    margin: 23px 35%;
+    padding: 6px;
+    background-color: #ffd97d;
+    border-radius: 14px;
+    border-style: groove;
+}
+
+.writeComment p {
+    color: gray;
+    font-size: large;
+}
+
+.writeComment textarea {
+    width: 100%;
+}
+
+.writeComment input[type=submit] {
+    padding: 2px 4px;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    border-radius: 3px;
+    margin-top: 3px;
+}
+
+.comments {
+    margin: 0px 25%;
+}
+
+.comments td {
+    padding: 6px;
+    background-color: #ffd97d;
+    border-radius: 14px;
+    border-style: groove;
+}
+
+.comments input[type=submit] {
+    padding: 2px 4px;
+    background-color: #EE6055;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.empty {
+    margin: 0px 35%;
+    padding: 6px;
+    background-color: #ffd97d;
+    border-radius: 14px;
+    border-style: groove;
 }

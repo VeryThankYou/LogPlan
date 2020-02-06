@@ -71,49 +71,54 @@ $result = $conn->query($sql);
       </div>
     </a>   
 
+    <div class="back">
+      <form method='POST'>
+      <input type='submit' name='back' value='Back'>
+      </form>
+    </div>
+
   </div>
-  <div>
-  <?php
-
-  echo $start;
-  ?>
-  <br>
-  <?php
-  echo $end;
-  ?>
-  <br>
-  </div>
-<form method='POST'>
-Description
-<br>
-<?php
-echo "<textarea name='dscrpt'>$dscrpt</textarea>";
-?>
-<input type='submit' name='adddes' value='Save description'>
-</form>
-<form method='POST'>
-<input type='submit' name='back' value='Back'>
-</form>
-
-<?php
-
-if($result->num_rows > 0){
-
-    ?>
-
-  <table class="kommentarer">
-    <tr>
-      <th>LogComments</th>
-    </tr>
-    <tr>
-    <td>User</td>
-    <td>LogComment</td>
-    </tr>
+  <h1 class="dateName">
     <?php
+
+    echo $start;
+    ?>
+    <br>
+    <?php
+    echo $end;
+    ?>
+    <br>
+  </h1>
+
+  <div class="description">
+    <p>Description</p>
+    <form method='POST'>
+    <br>
+    <?php
+    echo "<textarea name='dscrpt'>$dscrpt</textarea>";
+    ?>
+    <input type='submit' name='adddes' value='Save description'>
+    </form>
+  </div>
+    
+  <div class="writeComment">
+    <p>LogComments</p>
+    <form method='POST'>
+      <textarea name='commentText'>Write your LogComment here...</textarea>
+      <input type='submit' name='postComment' value='Post comment'>
+    </form>
+  </div>
+
+  <table class="comments">
+  
+  <?php
+  if($result->num_rows > 0){
   // løb alle rækker igennem
   while($row = $result->fetch_assoc()) {
   ?>
+  
     <tr>
+  
   <?php
   $poster = $row['user_id'];
   $id = $row['id'];
@@ -125,21 +130,20 @@ if($result->num_rows > 0){
   $userid = userID($_SESSION['email'], $conn);
 
   $comment = $row['text'];
-  echo "<td>$fname $lname</td><td>$comment</td>";
+  echo "<td>$fname $lname</td><td style='width:100%;'>$comment</td>";
   if($poster == $userid){
     echo "<td><form method='POST'><input type='submit' name='dlt' value='Delete'><input type='hidden' name='dltid' value='$id'></form></td>";
   }
   ?>
-    </tr>
+
+    </tr>  
+  </table>
   <?php
 }
 }else{
-    echo "There are no LogComments on this time-element";
+    echo "<div class='empty'>There are no LogComments on this time-element</div>";
 }
 ?>
-<form method='POST'>
-<textarea name='commentText'>Write your LogComment here...</textarea>
-<input type='submit' name='postComment' value='Post comment'>
-</form>
+  
 </body>
 </html>
