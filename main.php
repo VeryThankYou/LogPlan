@@ -71,8 +71,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
       <input type="submit" name="newProject" value="Create Project">
 
     </form>
-  </div>
 
+    <a href="index.php">
+      <div class="logout">
+        <p>Logout</p>
+      </div>
+    </a>    
+
+  </div>
 
   <?php
   $userid = userID($_SESSION['email'], $conn);

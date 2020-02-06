@@ -5,6 +5,11 @@ text-decoration: none;
 box-sizing: border-box;
 }
 
+.error {
+    background-color: #57a773;
+    padding-left: 4px;
+}
+
 .header {
     background-color: #EE6055;
     max-height: 92.8px;
@@ -39,7 +44,17 @@ box-sizing: border-box;
     border: none;
     color: white;
     cursor: pointer;
-}    
+} 
+
+.logout {
+    margin: 30px 30px;
+    padding: 3px 40px;
+    float: right; 
+    font-size: x-large;
+    background-color: #ff9b85;
+    border-radius: 4px;
+    color: white;
+}
 
 body, html {
     background-color: #AAf683
@@ -192,4 +207,68 @@ body, html {
     padding: 3px 3px;
     border-radius: 4px;
     margin-left: 4px;
+}
+
+.projectView {
+    margin: 100px 18%;
+    text-align: center;
+}
+
+.projectView h1 {
+    font-size: 70px;
+    color: white;
+    text-shadow: 3px 2px #57a773;
+}
+
+.projectInput {
+    padding: 6px;
+    background-color: #ffd97d;
+    border-radius: 14px;
+    border-style: groove;
+    margin: 0px 25%;
+}
+
+.projectInput input[type=text] {
+    padding: 2px 4px;
+}
+
+.projectInput input[type=submit] {
+    padding: 2px 4px;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.projectInput input[type=date] {
+    padding: 2px 4px;
+}
+
+.projectComment {
+    margin: 18px 25%;
+    padding: 6px;
+    background-color: #ffd97d;
+    border-radius: 14px;
+    border-style: groove;
+}
+
+.projectComment th {
+    color: gray;
+}
+
+.open {
+    padding: 2px 4px;
+    background-color: #57a773;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 0px 13px;    
+}
+
+.delete {
+    padding: 2px 4px;
+    background-color: #EE6055;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
