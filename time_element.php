@@ -60,16 +60,29 @@ $result = $conn->query($sql);
     <title>Document</title>
 </head>
 <body>
-<?php
 
-echo $start;
-?>
-<br>
-<?php
-echo $end;
-?>
-<br>
+  <div class="header">
 
+    <a href="main.php"><h1>LogPlan</h1></a>
+
+    <a href="index.php">
+      <div class="logout">
+        <p>Logout</p>
+      </div>
+    </a>   
+
+  </div>
+  <div>
+  <?php
+
+  echo $start;
+  ?>
+  <br>
+  <?php
+  echo $end;
+  ?>
+  <br>
+  </div>
 <form method='POST'>
 Description
 <br>
