@@ -137,9 +137,14 @@ $result = $conn->query($sql);
   ?>
 
     </tr>  
-  </table>
+
   <?php
 }
+
+?>
+  </table>
+<?php
+  
 }else{
     echo "<div class='empty'>There are no LogComments on this time-element</div>";
 }
